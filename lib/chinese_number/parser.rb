@@ -7,8 +7,8 @@ module ChineseNumber
     attr_reader :parts
     
     def self.generate_base_map
-      chinese_numbers = "一两二三四五六七八九〇零".chars
-      digits          = "122345678900".chars.map(&:to_i)
+      chinese_numbers = "一两兩二三四五六七八九〇零".chars
+      digits          = "1222345678900".chars.map(&:to_i)
       Hash.new.tap do |map|
         chinese_numbers.each_with_index do |w, i|
           d      = digits[i]
@@ -23,6 +23,7 @@ module ChineseNumber
         '百' => 100,
         '千' => 1000,
         '万' => 10000,
+        '萬' => 10000,
 
         # “兆” 在各处有不同的意义
         # 可能是 “百万”、“万亿”或“万万亿”
@@ -34,7 +35,8 @@ module ChineseNumber
         #   ChineseNumber::Parser::MULTIPERS['兆'] = 10000_0000_0000 
         '兆' => 100_0000,
 
-        '亿' => 10000_0000
+        '亿' => 10000_0000,
+        '億' => 10000_0000
       }
     end
 
