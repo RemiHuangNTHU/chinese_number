@@ -7,8 +7,8 @@ module ChineseNumber
     attr_reader :parts
     
     def self.generate_base_map
-      chinese_numbers = "一两兩二三四五六七八九〇零".chars
-      digits          = "1222345678900".chars.map(&:to_i)
+      chinese_numbers = "一ㄧ两兩二三四五六七八九〇零".chars
+      digits          = "11222345678900".chars.map(&:to_i)
       Hash.new.tap do |map|
         chinese_numbers.each_with_index do |w, i|
           d      = digits[i]
